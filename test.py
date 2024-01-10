@@ -1,5 +1,6 @@
 from sim import Simulation
-import pygame
+# todo: make it unnecessary to import pygame
+import pygame 
 
 
 # Window size
@@ -13,11 +14,13 @@ simulation.create_segment((100,500),(600,500))
 simulation.create_segment((600,500),(600,100))
 
 
-@simulation.events.add_event(pygame.MOUSEBUTTONDOWN)
+@simulation.events.add_event("mousebuttondown")
 def print_pos(event,*args,**kwargs):
     print(event.pos)
 
-
+@simulation.events.add_event("keydown")
+def print_key(event,*args,**kwargs):
+    print(event.key)
 
 if __name__ == "__main__":
     simulation.run()

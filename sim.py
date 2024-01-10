@@ -1,19 +1,22 @@
 import pygame
 import pymunk
 import pymunk.pygame_util
-
+from utils import str_to_pygame_event
 class Event:
-    def __init__(self,type:pygame.event.EventType,func) -> None:
+    def __init__(self,type:pygame.event.EventType,event_str,func) -> None:
         self.type = type
         self.func = func
+        self.event_str = event_str
 
 class Events:
     def __init__(self) -> None:
         self.events = []
 
-    def add_event(self,type:pygame.event.EventType):
+    def add_event(self,type:str):
         def decorator(func):
-            self.events.append(Event(type,func))
+            pygame_event = str_to_pygame_event(type)
+            print(pygame_event)
+            self.events.append(Event(pygame_event,type,func))
         return decorator
 
     def run_events(self,event:pygame.event.Event):
