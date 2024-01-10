@@ -1,4 +1,4 @@
-from sim import Simulation,Event
+from sim import Simulation
 import pygame
 
 
@@ -12,10 +12,11 @@ simulation.create_segment((100,100),(100,500))
 simulation.create_segment((100,500),(600,500))
 simulation.create_segment((600,500),(600,100))
 
-def print_hello():
-    print("Hello")
 
-simulation.events.add_event(Event(pygame.MOUSEBUTTONDOWN,print_hello))
+@simulation.events.add_event(pygame.MOUSEBUTTONDOWN)
+def print_pos(event,*args,**kwargs):
+    print(event.pos)
+
 
 
 if __name__ == "__main__":

@@ -6,15 +6,24 @@ class Event:
     def __init__(self,type:pygame.event.EventType,func) -> None:
         self.type = type
         self.func = func
+
 class Events:
     def __init__(self) -> None:
         self.events = []
-    def add_event(self,event):
-        self.events.append(event)
-    def run_events(self,type):
-        for event in self.events:
-            if event.type == type:
-                event.func()
+
+    def add_event(self,type:pygame.event.EventType):
+        def decorator(func):
+            self.events.append(Event(type,func))
+        return decorator
+
+    def run_events(self,event:pygame.event.Event):
+        for event_ in self.events:
+            if event_.type == event.type:
+                try:
+                    event_.func(event)
+                except Exception as e:
+                    print(e)
+
             
 
 
@@ -63,10 +72,7 @@ class Simulation:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.is_running = False
-                self.events.run_events(event.type)
-                # elif event.type == pygame.MOUSEBUTTONDOWN:
-                #     print(pygame.mouse.get_pos())
-                    
+                self.events.run_events(event)                    
 
             self.space.step(self.dt)
             self.draw()
