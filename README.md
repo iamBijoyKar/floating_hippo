@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="https://github.com/iamBijoyKar/floating_hippo/assets/85790967/ba8de7a3-e766-404a-9a24-ff413036a411" width="300" alt="logo" />
     <h1> Floating Hippo </h1>
     <p> Floating Hippo is a simple, abstracted, and easy to use library for 2D simulations using Pymunk and Pygames. 
     </p>
@@ -38,6 +39,8 @@ def on_click(event,*args,**kwargs):
 if __name__ == "__main__":
     simulation.run()
 ```
+![falling_balls_floating_hippo - Made with Clipchamp](https://github.com/iamBijoyKar/floating_hippo/assets/85790967/17dcbfbb-4874-4124-8be4-cf22722edea3)
+
 
 ## Contributing 🤝
 
