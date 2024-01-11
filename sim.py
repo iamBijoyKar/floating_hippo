@@ -49,32 +49,32 @@ class Simulation:
         self.draw_options = pymunk.pygame_util.DrawOptions(self.window)
         self.events = Events()
 
-    def create_ball(self,pos:Vec2d | Tuple[int,int],radius=30.0,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_ball(self,pos:Vec2d | Tuple[int,int],radius=30.0,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5)-> Tuple[pymunk.Body,pymunk.Circle]:
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Circle(body,radius)
         shape.elasticity = elasticity
         shape.friction = friction
         self.space.add(body,shape)
-        return shape
+        return (body,shape)
     
-    def create_box(self,pos:Vec2d | Tuple[int,int],width,height,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_box(self,pos:Vec2d | Tuple[int,int],width,height,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5)-> Tuple[pymunk.Body,pymunk.Poly]:
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Poly.create_box(body,(width,height))
         shape.elasticity = elasticity
         shape.friction = friction
         self.space.add(body,shape)
-        return shape
+        return (body,shape)
     
-    def create_poly(self,pos:Vec2d | Tuple[int,int],vertices:Sequence[Tuple[float,float]],mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_poly(self,pos:Vec2d | Tuple[int,int],vertices:Sequence[Tuple[float,float]],mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5)-> Tuple[pymunk.Body,pymunk.Poly]:
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Poly(body,vertices)
         shape.elasticity = elasticity
         shape.friction = friction
         self.space.add(body,shape)
-        return shape
+        return (body,shape)
     
     
     def create_segment(self,pos1:Vec2d | Tuple[int,int],pos2:Vec2d | Tuple[int,int],elasticity=0.5,friction=0.5):
