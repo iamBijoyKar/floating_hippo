@@ -5,7 +5,7 @@ with open("README.md", "r",encoding='utf-8') as file:
 
 setup(
     name='floating_hippo',
-    version='0.0.9',
+    version='0.0.10',
     description='Floating Hippo is a simple, abstracted, and easy to use library for 2D simulations using Pymunk and Pygames.',
     long_description=long_description,
     long_description_content_type='text/markdown',
