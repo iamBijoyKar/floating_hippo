@@ -1,14 +1,18 @@
 from setuptools import setup, find_packages
 
+with open("README.md", "r",encoding='utf-8') as file:
+    long_description = file.read()
+
 setup(
     name='floating_hippo',
     version='0.0.9',
     description='Floating Hippo is a simple, abstracted, and easy to use library for 2D simulations using Pymunk and Pygames.',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     author='Bijoy Kar',
     author_email='bjoykar54321@gmail.com',
     packages=find_packages(),
+    license='MIT',
     install_requires=['pygame','pymunk'],
     keywords=['physics','simulation','pymunk','pygame'],
     classifiers=[
