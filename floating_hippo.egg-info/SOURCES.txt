@@ -1,3 +1,5 @@
+LICENSE
+License.txt
 README.md
 setup.py
 floating_hippo/__init__.py
