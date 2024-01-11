@@ -5,6 +5,7 @@ setup(
     version='0.0.9',
     description='Floating Hippo is a simple, abstracted, and easy to use library for 2D simulations using Pymunk and Pygames.',
     long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     author='Bijoy Kar',
     author_email='bjoykar54321@gmail.com',
     packages=find_packages(),
