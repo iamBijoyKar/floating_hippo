@@ -1,6 +1,8 @@
 import pygame
 import pymunk
 import pymunk.pygame_util
+from pymunk import Vec2d
+from typing import Sequence,List,Tuple
 from utils import str_to_pygame_event
 class Event:
     def __init__(self,type:pygame.event.EventType,event_str,func) -> None:
@@ -51,6 +53,24 @@ class Simulation:
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Circle(body,radius)
+        shape.elasticity = elasticity
+        shape.friction = friction
+        self.space.add(body,shape)
+        return shape
+    
+    def create_box(self,pos:Vec2d | Tuple[int,int],width,height,mass=1,moment=100,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+        body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
+        body.position = pos
+        shape = pymunk.Poly.create_box(body,(width,height))
+        shape.elasticity = elasticity
+        shape.friction = friction
+        self.space.add(body,shape)
+        return shape
+    
+    def create_poly(self,pos:Vec2d | Tuple[int,int],vertices:Sequence[Tuple[float,float]],mass=1,moment=100,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+        body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
+        body.position = pos
+        shape = pymunk.Poly(body,vertices)
         shape.elasticity = elasticity
         shape.friction = friction
         self.space.add(body,shape)

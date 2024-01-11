@@ -12,11 +12,13 @@ simulation.create_ball((400,300))
 simulation.create_segment((100,100),(100,500))
 simulation.create_segment((100,500),(600,500))
 simulation.create_segment((600,500),(600,100))
+simulation.create_box((400,100),100,100)
+simulation.create_poly((100,100),[(0,0),(0,100),(100,100),(150,0)])
 
 
 @simulation.events.add_event("mousebuttondown")
 def print_pos(event,*args,**kwargs):
-    print(event.pos)
+    simulation.create_ball(event.pos)
 
 @simulation.events.add_event("keydown")
 def print_key(event,*args,**kwargs):
