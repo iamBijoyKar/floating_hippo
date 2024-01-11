@@ -3,7 +3,7 @@ import pymunk
 import pymunk.pygame_util
 from pymunk import Vec2d
 from typing import Sequence,List,Tuple
-from utils import str_to_pygame_event
+from .utils import str_to_pygame_event
 class Event:
     def __init__(self,type:pygame.event.EventType,event_str,func) -> None:
         self.type = type
