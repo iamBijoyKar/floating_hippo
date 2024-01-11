@@ -12,7 +12,7 @@ class Event:
 
 class Events:
     def __init__(self) -> None:
-        self.events = []
+        self.events:List[Event] = []
 
     def add_event(self,type:str):
         def decorator(func):
@@ -49,7 +49,7 @@ class Simulation:
         self.draw_options = pymunk.pygame_util.DrawOptions(self.window)
         self.events = Events()
 
-    def create_ball(self,pos,radius=30,mass=1,moment=100,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_ball(self,pos:Vec2d | Tuple[int,int],radius=30.0,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Circle(body,radius)
@@ -58,7 +58,7 @@ class Simulation:
         self.space.add(body,shape)
         return shape
     
-    def create_box(self,pos:Vec2d | Tuple[int,int],width,height,mass=1,moment=100,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_box(self,pos:Vec2d | Tuple[int,int],width,height,mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Poly.create_box(body,(width,height))
@@ -67,7 +67,7 @@ class Simulation:
         self.space.add(body,shape)
         return shape
     
-    def create_poly(self,pos:Vec2d | Tuple[int,int],vertices:Sequence[Tuple[float,float]],mass=1,moment=100,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
+    def create_poly(self,pos:Vec2d | Tuple[int,int],vertices:Sequence[Tuple[float,float]],mass=1.0,moment=100.0,body_type=pymunk.Body.DYNAMIC,elasticity=0.5,friction=0.5):
         body = pymunk.Body(mass=mass,moment=moment,body_type=body_type)
         body.position = pos
         shape = pymunk.Poly(body,vertices)
@@ -77,7 +77,7 @@ class Simulation:
         return shape
     
     
-    def create_segment(self,pos1,pos2,elasticity=0.5,friction=0.5):
+    def create_segment(self,pos1:Vec2d | Tuple[int,int],pos2:Vec2d | Tuple[int,int],elasticity=0.5,friction=0.5):
         segment = pymunk.Segment(self.space.static_body,pos1,pos2,1)
         segment.elasticity = elasticity
         segment.friction = friction
