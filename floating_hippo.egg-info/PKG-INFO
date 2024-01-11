@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: floating_hippo
+Version: 0.0.9
+Summary: Floating Hippo is a simple, abstracted, and easy to use library for 2D simulations using Pymunk and Pygames.
+Author: Bijoy Kar
+Author-email: bjoykar54321@gmail.com
+Keywords: physics,simulation,pymunk,pygame
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: pygame
+Requires-Dist: pymunk
