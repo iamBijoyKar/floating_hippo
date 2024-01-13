@@ -83,6 +83,31 @@ class Simulation:
         segment.friction = friction
         self.space.add(segment)
         return segment
+    
+    def create_pivot_joint(self,body1: pymunk.Body,body2: pymunk.Body,anchor1: Vec2d | Tuple[int,int],anchor2: Vec2d | Tuple[int,int]):
+        joint = pymunk.PinJoint(body1,body2,anchor1,anchor2)
+        self.space.add(joint)
+        return joint
+    
+    def create_pin_joint(self,body1: pymunk.Body,body2: pymunk.Body,anchor1: Vec2d | Tuple[int,int],anchor2: Vec2d | Tuple[int,int]):
+        joint = pymunk.PinJoint(body1,body2,anchor1,anchor2)
+        self.space.add(joint)
+        return joint
+    
+    def create_groove_joint(self,body1: pymunk.Body,body2: pymunk.Body,groove_a: Vec2d | Tuple[int,int],groove_b: Vec2d | Tuple[int,int],anchor2: Vec2d | Tuple[int,int]):
+        joint = pymunk.GrooveJoint(body1,body2,groove_a,groove_b,anchor2)
+        self.space.add(joint)
+        return joint
+    
+    def create_damped_spring(self,body1: pymunk.Body,body2: pymunk.Body,anchor1: Vec2d | Tuple[int,int],anchor2: Vec2d | Tuple[int,int],rest_length:float = 100.0,stiffness:float = 100.0,damping:float = 0.0):
+        joint = pymunk.DampedSpring(body1,body2,anchor1,anchor2,rest_length,stiffness,damping)
+        self.space.add(joint)
+        return joint
+    
+    def create_simple_motor(self,body1: pymunk.Body,body2: pymunk.Body,rate:float):
+        joint = pymunk.SimpleMotor(body1,body2,rate)
+        self.space.add(joint)
+        return joint
 
     def draw(self):
         self.window.fill((255,255,255))
