@@ -21,11 +21,8 @@ Simple example of a simulation dropping balls on a |_| shaped platform on mouse 
 ```python
 from floating_hippo import Simulation
 
-# Width and Height of the window
-WIDTH,HEIGHT = 800,600
-
 # Create a simulation
-simulation = Simulation(WIDTH,HEIGHT,caption="Test",gravity=(0,1000))
+simulation = Simulation(800,600,caption="Test",gravity=(0,1000))
 
 # Create a segment shape like |_|
 simulation.create_segment((100,100),(100,500))
@@ -36,8 +33,6 @@ simulation.create_segment((600,500),(600,100))
 def on_click(event,*args,**kwargs):
     simulation.create_ball(event.pos)
 
-if __name__ == "__main__":
-    simulation.run()
 ```
 ![falling_balls_floating_hippo - Made with Clipchamp](https://github.com/iamBijoyKar/floating_hippo/assets/85790967/17dcbfbb-4874-4124-8be4-cf22722edea3)
 
